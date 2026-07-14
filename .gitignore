@@ -163,3 +163,8 @@ $RECYCLE.BIN/
 /.vs/CorrectCoL/v15/Server/sqlite3/storage.ide
 /.vs/CorrectCoL/v15/sqlite3/db.lock
 /.vs/CorrectCoL/v15/sqlite3/storage.ide
+
+# VS / local KSPBuildTools
+.vs/
+*.props.user
+

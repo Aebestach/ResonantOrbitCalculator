@@ -1,30 +1,9 @@
 {
   "NAME": "ResonantOrbitCalculator",
-  "URL": "http://ksp.spacetux.net/avc/ResonantOrbitCalculator",
+  "VERSION": "0.0.7.1",
+  "URL": "https://github.com/linuxgurugamer/ResonantOrbitCalculator/releases/latest/download/ResonantOrbitCalculator.version",
   "DOWNLOAD": "https://github.com/linuxgurugamer/ResonantOrbitCalculator/releases",
-  "GITHUB": {
-    "USERNAME": "linuxgurugamer",
-    "REPOSITORY": "ResonantOrbitCalculator"
-  },
-  "VERSION": {
-    "MAJOR": 0,
-    "MINOR": 0,
-    "PATCH": 7,
-    "BUILD": 1
-  },
-  "KSP_VERSION": {
-    "MAJOR": 1,
-    "MINOR": 12,
-    "PATCH": 5
-  },
-  "KSP_VERSION_MIN": {
-    "MAJOR": 1,
-    "MINOR": 12,
-    "PATCH": 0
-  },
-  "KSP_VERSION_MAX": {
-    "MAJOR": 1,
-    "MINOR": 12,
-    "PATCH": 99
-  }
+  "KSP_VERSION": "1.12.5",
+  "KSP_VERSION_MIN": "1.12.0",
+  "KSP_VERSION_MAX": "1.12.99"
 }

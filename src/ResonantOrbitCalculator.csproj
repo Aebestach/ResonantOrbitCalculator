@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Version>0.0.7.1</Version>
+    <FileVersion>$(Version)</FileVersion>
+    <AssemblyName>ResonantOrbitCalculator</AssemblyName>
+    <RootNamespace>ResonantOrbitCalculator</RootNamespace>
+    <TargetFramework>net481</TargetFramework>
+
+    <Description>Resonant orbit calculator for Kerbal Space Program.</Description>
+    <Product>ResonantOrbitCalculator</Product>
+
+    <KSPBT_ModRoot>$(ProjectRootDir)GameData\$(AssemblyName)</KSPBT_ModRoot>
+    <KSPBT_ModPluginFolder>Plugins</KSPBT_ModPluginFolder>
+
+    <LangVersion>latest</LangVersion>
+    <DebugType>portable</DebugType>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(KSPBT_ModVersion)' != '' ">
+    <Version>$(KSPBT_ModVersion)</Version>
+    <FileVersion>$(Version)</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KSPBuildTools" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ModReference Include="ClickThroughBlocker">
+      <DLLPath>GameData/000_ClickThroughBlocker/Plugins/ClickThroughBlocker.dll</DLLPath>
+      <CKANIdentifier>ClickThroughBlocker</CKANIdentifier>
+      <KSPAssemblyVersion>1.0</KSPAssemblyVersion>
+    </ModReference>
+    <ModReference Include="ToolbarControl">
+      <DLLPath>GameData/001_ToolbarControl/Plugins/ToolbarControl.dll</DLLPath>
+      <CKANIdentifier>ToolbarController</CKANIdentifier>
+      <KSPAssemblyVersion>1.0</KSPAssemblyVersion>
+    </ModReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <KSPVersionFile Include=".">
+      <Destination>$(KSPBT_ModRoot)/$(AssemblyName).version</Destination>
+      <URL>https://github.com/linuxgurugamer/ResonantOrbitCalculator/releases/latest/download/ResonantOrbitCalculator.version</URL>
+      <Download>https://github.com/linuxgurugamer/ResonantOrbitCalculator/releases</Download>
+      <KSP_Version>1.12.5</KSP_Version>
+      <KSP_Version_Min>1.12.0</KSP_Version_Min>
+      <KSP_Version_Max>1.12.99</KSP_Version_Max>
+    </KSPVersionFile>
+  </ItemGroup>
+
+  <Target Name="DeployGameDataToKsp" AfterTargets="KSPBT_CopyDLLsToPluginFolder" Condition=" '$(KSPBT_GameRoot)' != '' ">
+    <PropertyGroup>
+      <_KspModDeployDir>$(KSPBT_GameRoot)/GameData/$(AssemblyName)</_KspModDeployDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <_ModDeployFiles Include="$(KSPBT_ModRoot)/**/*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_ModDeployFiles)" DestinationFolder="$(_KspModDeployDir)/%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Message Text="Deployed GameData to $(_KspModDeployDir)" Importance="high" />
+  </Target>
+</Project>
